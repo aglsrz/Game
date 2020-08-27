@@ -7,7 +7,7 @@ namespace Lab4{
 	protected:
 		int rad;
 	public:
-		Arrows(): Group(), rad(0){}
+		Arrows(): Group(), rad(5){}
 		int gettype(){ return 2; }
 		int fireAttack(Point );
 		void loadrad(ifstream &);

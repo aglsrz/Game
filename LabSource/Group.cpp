@@ -5,6 +5,7 @@ using namespace Lab4;
 
 namespace Lab4{
 	Group::Group() : initiative(0), num(0), dead_num(0), exp(0){}
+	Group::Group(int i, int n, int dn, int ex) : initiative(i), num(n), dead_num(dn), exp(ex){}
 	Group* Group::clone() {
 		Group *g = new Group;
 		g->initiative = initiative;
@@ -25,6 +26,8 @@ namespace Lab4{
 	int Group::harmGroup(int d)
 	{
 		int x = d - protection;
+		if (x < 0)
+			x = 1;
 		dead_num += x;
 		num -= x;
 		if (num <= 0)
@@ -76,5 +79,19 @@ namespace Lab4{
 		f >> i;	setnum(i);
 		f >> i;	dead_num = i;
 		f >> i;	setexp(i);
+	}
+
+	void Group::copy(Group g){
+		initiative = g.initiative;
+		name = g.name;
+		p = g.p;
+		school = g.school;
+		master = g.master;
+		velocity = g.velocity;
+		damage = g.damage;
+		num = g.num;
+		dead_num = g.dead_num;
+		exp = g.exp;
+		protection = g.protection;
 	}
 }

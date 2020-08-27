@@ -16,7 +16,19 @@ namespace Lab4{
 		school = arr;
 
 	}
-
+	void Master::copy(const Master&m)
+	{
+		initiative = m.initiative;
+		name = m.name;
+		id = m.id;
+		maxHealth = m.maxHealth;
+		curHealth = m.curHealth;
+		maxEnerg = m.maxEnerg;
+		curEnerg = m.curEnerg;
+		coefAcc = m.coefAcc;
+		exp = m.exp;
+		school = m.school;
+	}
 	void Master::setcurHealth(int curH){
 		if (curH > maxHealth)
 			throw std::exception("Invalid current health.");
@@ -33,9 +45,13 @@ namespace Lab4{
 		curEnerg += coefAcc;
 		return *this;
 	}
-	Master & Master::ImprSchool(string name){
-		school[name]++;
-		return *this;
+	bool Master::ImprSchool(string name){
+		//school[name]++;
+		map <const string, int>::iterator it = school.find(name);
+		if (it == school.end())
+			return false; // Школа не найдена
+		++(it->second);
+		return true;
 	}
 	Master & Master::receiveExp(){
 		exp++;
@@ -53,10 +69,11 @@ namespace Lab4{
 		f >> str;
 		name = str;
 		f >> i; id = i;
-		f >> i; setcurHealth(i);
+		f >> i;	initiative = i;
 		f >> i;	maxHealth=i;
+		f >> i; setcurHealth(i);
+		f >> i;	maxEnerg = i;	
 		f >> i;	setcurEner(i);
-		f >> i;	maxEnerg = i;
 		f >> i;	coefAcc = i;
 		f >> i;	exp= i;
 		int N;//Количество школ в списке
@@ -65,6 +82,7 @@ namespace Lab4{
 		{
 			f >> str; f >> i;
 			pair<const string, int> p (str, i);
+		//	cout << p.first << " School" << endl;
 			school.insert(p);
 		}
 	}

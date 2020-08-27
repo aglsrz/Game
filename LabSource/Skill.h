@@ -11,6 +11,7 @@ namespace Lab4{
 		int knowlevel;
 		int wasteEner;
 		int coefQuant;
+		int type;
 		Group group; //описатель существа
 		Skill* clone(){
 			Skill *snew= new Skill;
@@ -18,6 +19,7 @@ namespace Lab4{
 			(*snew).knowlevel = knowlevel;
 			(*snew).wasteEner = wasteEner;
 			(*snew).coefQuant = coefQuant;
+			(*snew).type = type;
 			(*snew).group = group; //Должен сработать копирующий конструктор Group
 			return snew;
 		}

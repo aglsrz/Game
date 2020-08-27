@@ -16,5 +16,3 @@ void Arrows::loadrad(ifstream &f){
 	f >> n;
 	rad = n;
 }
-
-//остельной функцией загузить радиус
